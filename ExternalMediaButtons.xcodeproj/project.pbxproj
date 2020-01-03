@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */; };
 		466BC0CD23BFE07600C4C2AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CC23BFE07600C4C2AA /* Assets.xcassets */; };
 		466BC0D023BFE07600C4C2AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CE23BFE07600C4C2AA /* MainMenu.xib */; };
+		466BC0DA23BFF92000C4C2AA /* ORSSerial in Frameworks */ = {isa = PBXBuildFile; productRef = 466BC0D923BFF92000C4C2AA /* ORSSerial */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466BC0DA23BFF92000C4C2AA /* ORSSerial in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +78,9 @@
 			dependencies = (
 			);
 			name = ExternalMediaButtons;
+			packageProductDependencies = (
+				466BC0D923BFF92000C4C2AA /* ORSSerial */,
+			);
 			productName = ExternalMediaButtons;
 			productReference = 466BC0C723BFE07300C4C2AA /* ExternalMediaButtons.app */;
 			productType = "com.apple.product-type.application";
@@ -104,6 +109,9 @@
 				Base,
 			);
 			mainGroup = 466BC0BE23BFE07300C4C2AA;
+			packageReferences = (
+				466BC0D823BFF92000C4C2AA /* XCRemoteSwiftPackageReference "ORSSerialPort" */,
+			);
 			productRefGroup = 466BC0C823BFE07300C4C2AA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -319,6 +327,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		466BC0D823BFF92000C4C2AA /* XCRemoteSwiftPackageReference "ORSSerialPort" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/armadsen/ORSSerialPort.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		466BC0D923BFF92000C4C2AA /* ORSSerial */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 466BC0D823BFF92000C4C2AA /* XCRemoteSwiftPackageReference "ORSSerialPort" */;
+			productName = ORSSerial;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 466BC0BF23BFE07300C4C2AA /* Project object */;
 }
