@@ -45,10 +45,6 @@ final class SerialPortMediaCommandsObserver: NSObject, MediaCommandsObserver {
 // MARK: - ORSSerialPortDelegate
 extension SerialPortMediaCommandsObserver: ORSSerialPortDelegate {
 
-    func serialPort(_ serialPort: ORSSerialPort, didReceive data: Data) {
-        // use didReceivePacket instead
-    }
-
     func serialPort(_ serialPort: ORSSerialPort,
                     didReceivePacket packetData: Data,
                     matching descriptor: ORSSerialPacketDescriptor) {
@@ -61,6 +57,7 @@ extension SerialPortMediaCommandsObserver: ORSSerialPortDelegate {
     }
 
     func serialPortWasRemovedFromSystem(_ serialPort: ORSSerialPort) {
+        port = nil
         print("Port was removed from system")
     }
 
