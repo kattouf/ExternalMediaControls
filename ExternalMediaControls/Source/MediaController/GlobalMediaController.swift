@@ -1,5 +1,5 @@
 //
-//  GlobalMediaControls.swift
+//  GlobalMediaController.swift
 //  ExternalMediaControls
 //
 //  Created by Vasiliy Yanguzin on 04.01.2020.
@@ -18,7 +18,7 @@ private struct Keytype {
     static let rewind: UInt32 = 20
 }
 
-final class GlobalMediaControls: MediaControls {
+final class GlobalMediaController: MediaController {
 
     // MARK: - MediaControls
     func prev() {

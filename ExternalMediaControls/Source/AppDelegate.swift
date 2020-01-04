@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
     private var port: ORSSerialPort?
-    private let mediaControls: MediaControls = YandexMusicMediaControls()
+    private let mediaController: MediaController = YandexMusicMediaController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard let port = ORSSerialPort(path: "/dev/cu.usbmodem144101") else {
@@ -48,11 +48,11 @@ extension AppDelegate: ORSSerialPortDelegate {
 
         switch receivedString {
         case "4":
-            mediaControls.prev()
+            mediaController.prev()
         case "2":
-            mediaControls.play()
+            mediaController.play()
         case "1":
-            mediaControls.next()
+            mediaController.next()
         default:
             break
         }

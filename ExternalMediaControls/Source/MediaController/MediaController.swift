@@ -1,5 +1,5 @@
 //
-//  MediaControls.swift
+//  MediaController.swift
 //  ExternalMediaButtons
 //
 //  Created by Vasiliy Yanguzin on 04.01.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MediaControls {
+protocol MediaController {
     func prev()
     func play()
     func next()

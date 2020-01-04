@@ -15,9 +15,9 @@
 		4683F3F723C0D46F00F93584 /* yamusic_next.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4683F3F423C0D46F00F93584 /* yamusic_next.scpt */; };
 		4683F3F823C0D46F00F93584 /* yamusic_prev.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4683F3F523C0D46F00F93584 /* yamusic_prev.scpt */; };
 		4683F3F923C0D46F00F93584 /* yamusic_play_pause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4683F3F623C0D46F00F93584 /* yamusic_play_pause.scpt */; };
-		4683F3FD23C0D53E00F93584 /* MediaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FC23C0D53E00F93584 /* MediaControls.swift */; };
-		4683F40023C0D60600F93584 /* YandexMusicMediaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FF23C0D60600F93584 /* YandexMusicMediaControls.swift */; };
-		4683F40223C0D64000F93584 /* GlobalMediaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F40123C0D64000F93584 /* GlobalMediaControls.swift */; };
+		4683F3FD23C0D53E00F93584 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FC23C0D53E00F93584 /* MediaController.swift */; };
+		4683F40023C0D60600F93584 /* YandexMusicMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FF23C0D60600F93584 /* YandexMusicMediaController.swift */; };
+		4683F40223C0D64000F93584 /* GlobalMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F40123C0D64000F93584 /* GlobalMediaController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +31,9 @@
 		4683F3F423C0D46F00F93584 /* yamusic_next.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_next.scpt; sourceTree = "<group>"; };
 		4683F3F523C0D46F00F93584 /* yamusic_prev.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_prev.scpt; sourceTree = "<group>"; };
 		4683F3F623C0D46F00F93584 /* yamusic_play_pause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_play_pause.scpt; sourceTree = "<group>"; };
-		4683F3FC23C0D53E00F93584 /* MediaControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaControls.swift; sourceTree = "<group>"; };
-		4683F3FF23C0D60600F93584 /* YandexMusicMediaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMusicMediaControls.swift; sourceTree = "<group>"; };
-		4683F40123C0D64000F93584 /* GlobalMediaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMediaControls.swift; sourceTree = "<group>"; };
+		4683F3FC23C0D53E00F93584 /* MediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaController.swift; sourceTree = "<group>"; };
+		4683F3FF23C0D60600F93584 /* YandexMusicMediaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMusicMediaController.swift; sourceTree = "<group>"; };
+		4683F40123C0D64000F93584 /* GlobalMediaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMediaController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,14 +85,14 @@
 			path = YandexMusicScripts;
 			sourceTree = "<group>";
 		};
-		4683F3FE23C0D5F600F93584 /* MediaControls */ = {
+		4683F3FE23C0D5F600F93584 /* MediaController */ = {
 			isa = PBXGroup;
 			children = (
-				4683F3FC23C0D53E00F93584 /* MediaControls.swift */,
-				4683F40123C0D64000F93584 /* GlobalMediaControls.swift */,
-				4683F3FF23C0D60600F93584 /* YandexMusicMediaControls.swift */,
+				4683F3FC23C0D53E00F93584 /* MediaController.swift */,
+				4683F40123C0D64000F93584 /* GlobalMediaController.swift */,
+				4683F3FF23C0D60600F93584 /* YandexMusicMediaController.swift */,
 			);
-			path = MediaControls;
+			path = MediaController;
 			sourceTree = "<group>";
 		};
 		46A197C323C0D9A200D0CDA4 /* Supporting Files */ = {
@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */,
-				4683F3FE23C0D5F600F93584 /* MediaControls */,
+				4683F3FE23C0D5F600F93584 /* MediaController */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -203,9 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4683F3FD23C0D53E00F93584 /* MediaControls.swift in Sources */,
-				4683F40223C0D64000F93584 /* GlobalMediaControls.swift in Sources */,
-				4683F40023C0D60600F93584 /* YandexMusicMediaControls.swift in Sources */,
+				4683F3FD23C0D53E00F93584 /* MediaController.swift in Sources */,
+				4683F40223C0D64000F93584 /* GlobalMediaController.swift in Sources */,
+				4683F40023C0D60600F93584 /* YandexMusicMediaController.swift in Sources */,
 				466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

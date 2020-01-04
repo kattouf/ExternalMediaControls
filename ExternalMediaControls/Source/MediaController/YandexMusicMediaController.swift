@@ -1,5 +1,5 @@
 //
-//  YandexMusicMediaControls.swift
+//  YandexMusicMediaController.swift
 //  ExternalMediaControls
 //
 //  Created by Vasiliy Yanguzin on 04.01.2020.
@@ -14,7 +14,7 @@ private struct ScriptsName {
     static let next = "yamusic_next"
 }
 
-final class YandexMusicMediaControls: MediaControls {
+final class YandexMusicMediaController: MediaController {
 
     // MARK: - MediaControls
     func prev() {
