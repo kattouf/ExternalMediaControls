@@ -18,6 +18,8 @@
 		4683F3FD23C0D53E00F93584 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FC23C0D53E00F93584 /* MediaController.swift */; };
 		4683F40023C0D60600F93584 /* YandexMusicMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FF23C0D60600F93584 /* YandexMusicMediaController.swift */; };
 		4683F40223C0D64000F93584 /* GlobalMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F40123C0D64000F93584 /* GlobalMediaController.swift */; };
+		46EE16A523C0F9BB007B1203 /* MediaCommandsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EE16A423C0F9BB007B1203 /* MediaCommandsObserver.swift */; };
+		46EE16A723C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EE16A623C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4683F3FC23C0D53E00F93584 /* MediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaController.swift; sourceTree = "<group>"; };
 		4683F3FF23C0D60600F93584 /* YandexMusicMediaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMusicMediaController.swift; sourceTree = "<group>"; };
 		4683F40123C0D64000F93584 /* GlobalMediaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMediaController.swift; sourceTree = "<group>"; };
+		46EE16A423C0F9BB007B1203 /* MediaCommandsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCommandsObserver.swift; sourceTree = "<group>"; };
+		46EE16A623C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialPortMediaCommandsObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +122,19 @@
 			isa = PBXGroup;
 			children = (
 				466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */,
+				46EE16A323C0F9A6007B1203 /* MediaCommandsObserver */,
 				4683F3FE23C0D5F600F93584 /* MediaController */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		46EE16A323C0F9A6007B1203 /* MediaCommandsObserver */ = {
+			isa = PBXGroup;
+			children = (
+				46EE16A423C0F9BB007B1203 /* MediaCommandsObserver.swift */,
+				46EE16A623C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift */,
+			);
+			path = MediaCommandsObserver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +219,8 @@
 			files = (
 				4683F3FD23C0D53E00F93584 /* MediaController.swift in Sources */,
 				4683F40223C0D64000F93584 /* GlobalMediaController.swift in Sources */,
+				46EE16A523C0F9BB007B1203 /* MediaCommandsObserver.swift in Sources */,
+				46EE16A723C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift in Sources */,
 				4683F40023C0D60600F93584 /* YandexMusicMediaController.swift in Sources */,
 				466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */,
 			);
