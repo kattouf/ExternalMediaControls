@@ -17,7 +17,7 @@ final class SerialPortMediaCommandsObserver: NSObject, MediaCommandsObserver {
     var didReceiveCommand: ((MediaCommand) -> Void)?
 
     func start() {
-        guard let port = ORSSerialPort(path: "/dev/cu.usbmodem144101") else {
+        guard let port = ORSSerialPortManager.shared().availablePorts.first(where: { $0.path == "/dev/cu.usbmodem144101" }) else {
             print("cannot connect to port")
             return
         }
