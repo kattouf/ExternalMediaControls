@@ -11,8 +11,6 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-
     private let mediaController: MediaController = YandexMusicMediaController()
     private let mediaCommandsObserver: MediaCommandsObserver = SerialPortMediaCommandsObserver()
 
