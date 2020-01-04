@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AudioToolbox
 
 private struct Keytype {
     static let soundUp: UInt32 = 0
@@ -30,9 +31,9 @@ final class GlobalMediaController: MediaController {
         case .next:
             simulateKeyClick(Keytype.next)
         case .volumeUp:
-            break
+            simulateKeyClick(Keytype.soundUp)
         case .volumeDown:
-            break
+            simulateKeyClick(Keytype.soundDown)
         }
     }
 
@@ -60,4 +61,61 @@ final class GlobalMediaController: MediaController {
         doKey(down: false)
     }
 
+    private func setGlobalVolume(_ value: Float) {
+        var volume = value
+        let volumeSize = UInt32(MemoryLayout.size(ofValue: volume))
+
+        var volumePropertyAddress = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwareServiceDeviceProperty_VirtualMasterVolume,
+            mScope: kAudioDevicePropertyScopeOutput,
+            mElement: kAudioObjectPropertyElementMaster)
+
+        AudioObjectSetPropertyData(
+            Self.defaultOutputDeviceID,
+            &volumePropertyAddress,
+            0,
+            nil,
+            volumeSize,
+            &volume)
+
+    }
+
+    private func getGlobalVolume() -> Float {
+        var volume = Float32(0.0)
+        var volumeSize = UInt32(MemoryLayout.size(ofValue: volume))
+
+        var volumePropertyAddress = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwareServiceDeviceProperty_VirtualMasterVolume,
+            mScope: kAudioDevicePropertyScopeOutput,
+            mElement: kAudioObjectPropertyElementMaster)
+
+        AudioObjectGetPropertyData(
+            Self.defaultOutputDeviceID,
+            &volumePropertyAddress,
+            0,
+            nil,
+            &volumeSize,
+            &volume)
+
+        return volume
+    }
+
+    private static let defaultOutputDeviceID: AudioObjectID = {
+        var defaultOutputDeviceID = AudioDeviceID(0)
+        var defaultOutputDeviceIDSize = UInt32(MemoryLayout.size(ofValue: defaultOutputDeviceID))
+
+        var getDefaultOutputDevicePropertyAddress = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwarePropertyDefaultOutputDevice,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: AudioObjectPropertyElement(kAudioObjectPropertyElementMaster))
+
+        AudioObjectGetPropertyData(
+            AudioObjectID(kAudioObjectSystemObject),
+            &getDefaultOutputDevicePropertyAddress,
+            0,
+            nil,
+            &defaultOutputDeviceIDSize,
+            &defaultOutputDeviceID)
+        return defaultOutputDeviceID
+    }()
 }
