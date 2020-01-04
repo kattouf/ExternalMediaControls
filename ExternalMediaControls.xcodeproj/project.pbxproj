@@ -21,6 +21,9 @@
 		46EE16A523C0F9BB007B1203 /* MediaCommandsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EE16A423C0F9BB007B1203 /* MediaCommandsObserver.swift */; };
 		46EE16A723C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EE16A623C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift */; };
 		46EE16A923C107DE007B1203 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EE16A823C107DE007B1203 /* StatusMenuController.swift */; };
+		46EE16AE23C149AF007B1203 /* yamusic_vol_down.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 46EE16AC23C149AF007B1203 /* yamusic_vol_down.scpt */; };
+		46EE16AF23C149AF007B1203 /* yamusic_vol_up.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 46EE16AD23C149AF007B1203 /* yamusic_vol_up.scpt */; };
+		46EE16B123C14A59007B1203 /* MediaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EE16B023C14A59007B1203 /* MediaCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		46EE16A423C0F9BB007B1203 /* MediaCommandsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCommandsObserver.swift; sourceTree = "<group>"; };
 		46EE16A623C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialPortMediaCommandsObserver.swift; sourceTree = "<group>"; };
 		46EE16A823C107DE007B1203 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		46EE16AC23C149AF007B1203 /* yamusic_vol_down.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_vol_down.scpt; sourceTree = "<group>"; };
+		46EE16AD23C149AF007B1203 /* yamusic_vol_up.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_vol_up.scpt; sourceTree = "<group>"; };
+		46EE16B023C14A59007B1203 /* MediaCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,8 @@
 		4683F3F323C0D3AD00F93584 /* YandexMusicScripts */ = {
 			isa = PBXGroup;
 			children = (
+				46EE16AC23C149AF007B1203 /* yamusic_vol_down.scpt */,
+				46EE16AD23C149AF007B1203 /* yamusic_vol_up.scpt */,
 				4683F3F123C0CF4A00F93584 /* safari_utils.scpt */,
 				4683F3F423C0D46F00F93584 /* yamusic_next.scpt */,
 				4683F3F623C0D46F00F93584 /* yamusic_play_pause.scpt */,
@@ -125,6 +133,7 @@
 			children = (
 				466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */,
 				46EE16A823C107DE007B1203 /* StatusMenuController.swift */,
+				46EE16B023C14A59007B1203 /* MediaCommand.swift */,
 				46EE16A323C0F9A6007B1203 /* MediaCommandsObserver */,
 				4683F3FE23C0D5F600F93584 /* MediaController */,
 			);
@@ -206,10 +215,12 @@
 			files = (
 				466BC0CD23BFE07600C4C2AA /* Assets.xcassets in Resources */,
 				4683F3F823C0D46F00F93584 /* yamusic_prev.scpt in Resources */,
+				46EE16AF23C149AF007B1203 /* yamusic_vol_up.scpt in Resources */,
 				4683F3F923C0D46F00F93584 /* yamusic_play_pause.scpt in Resources */,
 				466BC0D023BFE07600C4C2AA /* MainMenu.xib in Resources */,
 				4683F3F723C0D46F00F93584 /* yamusic_next.scpt in Resources */,
 				4683F3F223C0CF4A00F93584 /* safari_utils.scpt in Resources */,
+				46EE16AE23C149AF007B1203 /* yamusic_vol_down.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +235,7 @@
 				4683F40223C0D64000F93584 /* GlobalMediaController.swift in Sources */,
 				46EE16A523C0F9BB007B1203 /* MediaCommandsObserver.swift in Sources */,
 				46EE16A723C0FA74007B1203 /* SerialPortMediaCommandsObserver.swift in Sources */,
+				46EE16B123C14A59007B1203 /* MediaCommand.swift in Sources */,
 				4683F40023C0D60600F93584 /* YandexMusicMediaController.swift in Sources */,
 				46EE16A923C107DE007B1203 /* StatusMenuController.swift in Sources */,
 				466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */,

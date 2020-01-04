@@ -9,7 +9,5 @@
 import Foundation
 
 protocol MediaController {
-    func prev()
-    func play()
-    func next()
+    func handle(command: MediaCommand)
 }

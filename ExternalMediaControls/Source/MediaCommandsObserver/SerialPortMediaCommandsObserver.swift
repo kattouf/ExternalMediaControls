@@ -86,6 +86,11 @@ private extension SerialPortMediaCommandsObserver {
             return .play
         case "103":
             return .next
+        case "104":
+            return .volumeUp
+        case "105":
+            return .volumeDown
+
         default:
             return .none
         }

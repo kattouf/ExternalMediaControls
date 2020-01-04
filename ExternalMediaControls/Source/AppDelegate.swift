@@ -18,14 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         mediaCommandsObserver.didReceiveCommand = { [weak self] command in
-            switch command {
-            case .prev:
-                self?.mediaController.prev()
-            case .play:
-                self?.mediaController.play()
-            case .next:
-                self?.mediaController.next()
-            }
+            self?.mediaController.handle(command: command)
         }
         mediaCommandsObserver.start()
     }

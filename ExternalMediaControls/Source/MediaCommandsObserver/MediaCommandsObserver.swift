@@ -8,12 +8,6 @@
 
 import Foundation
 
-enum MediaCommand {
-    case prev
-    case play
-    case next
-}
-
 protocol MediaCommandsObserver: class {
     var didReceiveCommand: ((MediaCommand) -> Void)? { get set }
     

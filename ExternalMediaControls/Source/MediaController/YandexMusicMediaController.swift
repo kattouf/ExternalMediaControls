@@ -12,21 +12,30 @@ private struct ScriptsName {
     static let prev = "yamusic_prev"
     static let play = "yamusic_play_pause"
     static let next = "yamusic_next"
+    static let volumeUp = "yamusic_vol_up"
+    static let volumeDown = "yamusic_vol_down"
 }
 
 final class YandexMusicMediaController: MediaController {
 
-    // MARK: - MediaControls
-    func prev() {
-        executeAppleScript(named: ScriptsName.prev)
-    }
+    // MARK: - MediaController
+    func handle(command: MediaCommand) {
+        let scriptName: String
+        
+        switch command {
+        case .prev:
+            scriptName = ScriptsName.prev
+        case .play:
+            scriptName = ScriptsName.play
+        case .next:
+            scriptName = ScriptsName.next
+        case .volumeUp:
+            scriptName = ScriptsName.volumeUp
+        case .volumeDown:
+            scriptName = ScriptsName.volumeDown
+        }
 
-    func play() {
-        executeAppleScript(named: ScriptsName.play)
-    }
-
-    func next() {
-        executeAppleScript(named: ScriptsName.next)
+        executeAppleScript(named: scriptName)
     }
 
     // MARK: - Private methods

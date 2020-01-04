@@ -20,17 +20,20 @@ private struct Keytype {
 
 final class GlobalMediaController: MediaController {
 
-    // MARK: - MediaControls
-    func prev() {
-        simulateKeyClick(Keytype.previous)
-    }
-
-    func play() {
-        simulateKeyClick(Keytype.play)
-    }
-
-    func next() {
-        simulateKeyClick(Keytype.next)
+    // MARK: - MediaController
+    func handle(command: MediaCommand) {
+        switch command {
+        case .prev:
+            simulateKeyClick(Keytype.previous)
+        case .play:
+            simulateKeyClick(Keytype.play)
+        case .next:
+            simulateKeyClick(Keytype.next)
+        case .volumeUp:
+            break
+        case .volumeDown:
+            break
+        }
     }
 
     // MARK: - Private methods
