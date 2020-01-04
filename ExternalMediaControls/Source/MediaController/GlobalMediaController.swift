@@ -37,10 +37,10 @@ final class GlobalMediaController: MediaController {
     private func simulateKeyClick(_ key: UInt32) {
         func doKey(down: Bool) {
             let flags = NSEvent.ModifierFlags(rawValue: (down ? 0xa00 : 0xb00))
-            let data1 = Int((key<<16) | (down ? 0xa00 : 0xb00))
+            let data1 = Int((key << 16) | (down ? 0xa00 : 0xb00))
 
             let ev = NSEvent.otherEvent(with: NSEvent.EventType.systemDefined,
-                                        location: NSPoint(x:0,y:0),
+                                        location: NSPoint(x:0, y:0),
                                         modifierFlags: flags,
                                         timestamp: 0,
                                         windowNumber: 0,
