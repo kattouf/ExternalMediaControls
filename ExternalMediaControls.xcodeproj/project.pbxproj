@@ -11,15 +11,29 @@
 		466BC0CD23BFE07600C4C2AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CC23BFE07600C4C2AA /* Assets.xcassets */; };
 		466BC0D023BFE07600C4C2AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CE23BFE07600C4C2AA /* MainMenu.xib */; };
 		466BC0DA23BFF92000C4C2AA /* ORSSerial in Frameworks */ = {isa = PBXBuildFile; productRef = 466BC0D923BFF92000C4C2AA /* ORSSerial */; };
+		4683F3F223C0CF4A00F93584 /* safari_utils.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4683F3F123C0CF4A00F93584 /* safari_utils.scpt */; };
+		4683F3F723C0D46F00F93584 /* yamusic_next.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4683F3F423C0D46F00F93584 /* yamusic_next.scpt */; };
+		4683F3F823C0D46F00F93584 /* yamusic_prev.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4683F3F523C0D46F00F93584 /* yamusic_prev.scpt */; };
+		4683F3F923C0D46F00F93584 /* yamusic_play_pause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4683F3F623C0D46F00F93584 /* yamusic_play_pause.scpt */; };
+		4683F3FD23C0D53E00F93584 /* MediaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FC23C0D53E00F93584 /* MediaControls.swift */; };
+		4683F40023C0D60600F93584 /* YandexMusicMediaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F3FF23C0D60600F93584 /* YandexMusicMediaControls.swift */; };
+		4683F40223C0D64000F93584 /* GlobalMediaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683F40123C0D64000F93584 /* GlobalMediaControls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		466BC0C723BFE07300C4C2AA /* ExternalMediaButtons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExternalMediaButtons.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		466BC0C723BFE07300C4C2AA /* ExternalMediaControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExternalMediaControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		466BC0CC23BFE07600C4C2AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		466BC0CF23BFE07600C4C2AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		466BC0D123BFE07600C4C2AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		466BC0D223BFE07600C4C2AA /* ExternalMediaButtons.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExternalMediaButtons.entitlements; sourceTree = "<group>"; };
+		466BC0D223BFE07600C4C2AA /* ExternalMediaControls.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExternalMediaControls.entitlements; sourceTree = "<group>"; };
+		4683F3F123C0CF4A00F93584 /* safari_utils.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = safari_utils.scpt; sourceTree = "<group>"; };
+		4683F3F423C0D46F00F93584 /* yamusic_next.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_next.scpt; sourceTree = "<group>"; };
+		4683F3F523C0D46F00F93584 /* yamusic_prev.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_prev.scpt; sourceTree = "<group>"; };
+		4683F3F623C0D46F00F93584 /* yamusic_play_pause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_play_pause.scpt; sourceTree = "<group>"; };
+		4683F3FC23C0D53E00F93584 /* MediaControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaControls.swift; sourceTree = "<group>"; };
+		4683F3FF23C0D60600F93584 /* YandexMusicMediaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMusicMediaControls.swift; sourceTree = "<group>"; };
+		4683F40123C0D64000F93584 /* GlobalMediaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMediaControls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +51,7 @@
 		466BC0BE23BFE07300C4C2AA = {
 			isa = PBXGroup;
 			children = (
-				466BC0C923BFE07300C4C2AA /* ExternalMediaButtons */,
+				466BC0C923BFE07300C4C2AA /* ExternalMediaControls */,
 				466BC0C823BFE07300C4C2AA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,29 +59,76 @@
 		466BC0C823BFE07300C4C2AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				466BC0C723BFE07300C4C2AA /* ExternalMediaButtons.app */,
+				466BC0C723BFE07300C4C2AA /* ExternalMediaControls.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		466BC0C923BFE07300C4C2AA /* ExternalMediaButtons */ = {
+		466BC0C923BFE07300C4C2AA /* ExternalMediaControls */ = {
+			isa = PBXGroup;
+			children = (
+				46A197C523C0D9CD00D0CDA4 /* Source */,
+				46A197C423C0D9B200D0CDA4 /* Resources */,
+				46A197C323C0D9A200D0CDA4 /* Supporting Files */,
+			);
+			path = ExternalMediaControls;
+			sourceTree = "<group>";
+		};
+		4683F3F323C0D3AD00F93584 /* YandexMusicScripts */ = {
+			isa = PBXGroup;
+			children = (
+				4683F3F123C0CF4A00F93584 /* safari_utils.scpt */,
+				4683F3F423C0D46F00F93584 /* yamusic_next.scpt */,
+				4683F3F623C0D46F00F93584 /* yamusic_play_pause.scpt */,
+				4683F3F523C0D46F00F93584 /* yamusic_prev.scpt */,
+			);
+			path = YandexMusicScripts;
+			sourceTree = "<group>";
+		};
+		4683F3FE23C0D5F600F93584 /* MediaControls */ = {
+			isa = PBXGroup;
+			children = (
+				4683F3FC23C0D53E00F93584 /* MediaControls.swift */,
+				4683F40123C0D64000F93584 /* GlobalMediaControls.swift */,
+				4683F3FF23C0D60600F93584 /* YandexMusicMediaControls.swift */,
+			);
+			path = MediaControls;
+			sourceTree = "<group>";
+		};
+		46A197C323C0D9A200D0CDA4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				466BC0D123BFE07600C4C2AA /* Info.plist */,
+				466BC0D223BFE07600C4C2AA /* ExternalMediaControls.entitlements */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46A197C423C0D9B200D0CDA4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4683F3F323C0D3AD00F93584 /* YandexMusicScripts */,
+				466BC0CC23BFE07600C4C2AA /* Assets.xcassets */,
+				466BC0CE23BFE07600C4C2AA /* MainMenu.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		46A197C523C0D9CD00D0CDA4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */,
-				466BC0CC23BFE07600C4C2AA /* Assets.xcassets */,
-				466BC0CE23BFE07600C4C2AA /* MainMenu.xib */,
-				466BC0D123BFE07600C4C2AA /* Info.plist */,
-				466BC0D223BFE07600C4C2AA /* ExternalMediaButtons.entitlements */,
+				4683F3FE23C0D5F600F93584 /* MediaControls */,
 			);
-			path = ExternalMediaButtons;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		466BC0C623BFE07300C4C2AA /* ExternalMediaButtons */ = {
+		466BC0C623BFE07300C4C2AA /* ExternalMediaControls */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 466BC0D523BFE07600C4C2AA /* Build configuration list for PBXNativeTarget "ExternalMediaButtons" */;
+			buildConfigurationList = 466BC0D523BFE07600C4C2AA /* Build configuration list for PBXNativeTarget "ExternalMediaControls" */;
 			buildPhases = (
 				466BC0C323BFE07300C4C2AA /* Sources */,
 				466BC0C423BFE07300C4C2AA /* Frameworks */,
@@ -77,12 +138,12 @@
 			);
 			dependencies = (
 			);
-			name = ExternalMediaButtons;
+			name = ExternalMediaControls;
 			packageProductDependencies = (
 				466BC0D923BFF92000C4C2AA /* ORSSerial */,
 			);
-			productName = ExternalMediaButtons;
-			productReference = 466BC0C723BFE07300C4C2AA /* ExternalMediaButtons.app */;
+			productName = ExternalMediaControls;
+			productReference = 466BC0C723BFE07300C4C2AA /* ExternalMediaControls.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +161,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 466BC0C223BFE07300C4C2AA /* Build configuration list for PBXProject "ExternalMediaButtons" */;
+			buildConfigurationList = 466BC0C223BFE07300C4C2AA /* Build configuration list for PBXProject "ExternalMediaControls" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -116,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				466BC0C623BFE07300C4C2AA /* ExternalMediaButtons */,
+				466BC0C623BFE07300C4C2AA /* ExternalMediaControls */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +188,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				466BC0CD23BFE07600C4C2AA /* Assets.xcassets in Resources */,
+				4683F3F823C0D46F00F93584 /* yamusic_prev.scpt in Resources */,
+				4683F3F923C0D46F00F93584 /* yamusic_play_pause.scpt in Resources */,
 				466BC0D023BFE07600C4C2AA /* MainMenu.xib in Resources */,
+				4683F3F723C0D46F00F93584 /* yamusic_next.scpt in Resources */,
+				4683F3F223C0CF4A00F93584 /* safari_utils.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4683F3FD23C0D53E00F93584 /* MediaControls.swift in Sources */,
+				4683F40223C0D64000F93584 /* GlobalMediaControls.swift in Sources */,
+				4683F40023C0D60600F93584 /* YandexMusicMediaControls.swift in Sources */,
 				466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,15 +341,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ExternalMediaButtons/ExternalMediaButtons.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "ExternalMediaControls/Supporting Files/ExternalMediaControls.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = ExternalMediaButtons/Info.plist;
+				INFOPLIST_FILE = "ExternalMediaControls/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.kattouf.ExternalMediaButtons;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kattouf.ExternalMediaControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -291,15 +359,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ExternalMediaButtons/ExternalMediaButtons.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "ExternalMediaControls/Supporting Files/ExternalMediaControls.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = ExternalMediaButtons/Info.plist;
+				INFOPLIST_FILE = "ExternalMediaControls/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.kattouf.ExternalMediaButtons;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kattouf.ExternalMediaControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -308,7 +376,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		466BC0C223BFE07300C4C2AA /* Build configuration list for PBXProject "ExternalMediaButtons" */ = {
+		466BC0C223BFE07300C4C2AA /* Build configuration list for PBXProject "ExternalMediaControls" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				466BC0D323BFE07600C4C2AA /* Debug */,
@@ -317,7 +385,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		466BC0D523BFE07600C4C2AA /* Build configuration list for PBXNativeTarget "ExternalMediaButtons" */ = {
+		466BC0D523BFE07600C4C2AA /* Build configuration list for PBXNativeTarget "ExternalMediaControls" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				466BC0D623BFE07600C4C2AA /* Debug */,
