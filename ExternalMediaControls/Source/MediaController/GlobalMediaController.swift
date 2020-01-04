@@ -10,13 +10,11 @@ import Cocoa
 import AudioToolbox
 
 private struct Keytype {
-    static let soundUp: UInt32 = 0
-    static let soundDown: UInt32 = 1
-    static let play: UInt32 = 16
-    static let next: UInt32 = 17
-    static let previous: UInt32 = 18
-    static let fast: UInt32 = 19
-    static let rewind: UInt32 = 20
+    static let soundUp: Int32 = NX_KEYTYPE_SOUND_UP
+    static let soundDown: Int32 = NX_KEYTYPE_SOUND_DOWN
+    static let play: Int32 = NX_KEYTYPE_PLAY
+    static let next: Int32 = NX_KEYTYPE_NEXT
+    static let previous: Int32 = NX_KEYTYPE_PREVIOUS
 }
 
 final class GlobalMediaController: MediaController {
@@ -38,13 +36,13 @@ final class GlobalMediaController: MediaController {
     }
 
     // MARK: - Private methods
-    private func simulateKeyClick(_ key: UInt32) {
+    private func simulateKeyClick(_ key: Int32) {
         func doKey(down: Bool) {
             let flags = NSEvent.ModifierFlags(rawValue: (down ? 0xa00 : 0xb00))
             let data1 = Int((key << 16) | (down ? 0xa00 : 0xb00))
 
-            let ev = NSEvent.otherEvent(with: NSEvent.EventType.systemDefined,
-                                        location: NSPoint(x:0, y:0),
+            let ev = NSEvent.otherEvent(with: .systemDefined,
+                                        location: .zero,
                                         modifierFlags: flags,
                                         timestamp: 0,
                                         windowNumber: 0,
