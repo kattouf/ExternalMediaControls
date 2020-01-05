@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		461B3D2623C16CA500BEA0A2 /* yamusic_vol_change.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 461B3D2523C16CA500BEA0A2 /* yamusic_vol_change.scpt */; };
 		466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */; };
 		466BC0CD23BFE07600C4C2AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CC23BFE07600C4C2AA /* Assets.xcassets */; };
 		466BC0D023BFE07600C4C2AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CE23BFE07600C4C2AA /* MainMenu.xib */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		461B3D2523C16CA500BEA0A2 /* yamusic_vol_change.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_vol_change.scpt; sourceTree = "<group>"; };
 		466BC0C723BFE07300C4C2AA /* ExternalMediaControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExternalMediaControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		466BC0CC23BFE07600C4C2AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		4683F3F323C0D3AD00F93584 /* YandexMusicScripts */ = {
 			isa = PBXGroup;
 			children = (
+				461B3D2523C16CA500BEA0A2 /* yamusic_vol_change.scpt */,
 				46EE16AC23C149AF007B1203 /* yamusic_vol_down.scpt */,
 				46EE16AD23C149AF007B1203 /* yamusic_vol_up.scpt */,
 				4683F3F123C0CF4A00F93584 /* safari_utils.scpt */,
@@ -213,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				461B3D2623C16CA500BEA0A2 /* yamusic_vol_change.scpt in Resources */,
 				466BC0CD23BFE07600C4C2AA /* Assets.xcassets in Resources */,
 				4683F3F823C0D46F00F93584 /* yamusic_prev.scpt in Resources */,
 				46EE16AF23C149AF007B1203 /* yamusic_vol_up.scpt in Resources */,

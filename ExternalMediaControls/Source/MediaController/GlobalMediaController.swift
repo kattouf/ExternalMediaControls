@@ -32,6 +32,8 @@ final class GlobalMediaController: MediaController {
             simulateKeyClick(Keytype.soundUp)
         case .volumeDown:
             simulateKeyClick(Keytype.soundDown)
+        case .volume:
+            break
         }
     }
 

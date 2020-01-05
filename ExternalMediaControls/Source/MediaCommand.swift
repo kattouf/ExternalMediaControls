@@ -14,4 +14,5 @@ enum MediaCommand {
     case next
     case volumeUp
     case volumeDown
+    case volume(value: Float)
 }

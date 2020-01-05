@@ -77,22 +77,26 @@ extension SerialPortMediaCommandsObserver: ORSSerialPortDelegate {
 private extension SerialPortMediaCommandsObserver {
 
     func parseCommand(from receivedData: Data) -> MediaCommand? {
-        let receivedString = String(data: receivedData, encoding: .utf8)
+        guard let receivedString = String(data: receivedData, encoding: .utf8),
+            let code = Int(receivedString) else {
+                return nil
+        }
 
-        switch receivedString {
-        case "101":
+        switch code {
+        case 101:
             return .prev
-        case "102":
+        case 102:
             return .play
-        case "103":
+        case 103:
             return .next
-        case "104":
+        case 104:
             return .volumeDown
-        case "105":
+        case 105:
             return .volumeUp
-
+        case 200...299:
+            return .volume(value: Float(code - 200) / Float(299 - 200))
         default:
-            return .none
+            return nil
         }
     }
 }
