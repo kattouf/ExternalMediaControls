@@ -20,6 +20,8 @@ private struct ScriptsName {
 
 final class YandexMusicMediaController: MediaController {
 
+    private let volumeChangeThrottler = Throttler(minimumDelay: 0.05)
+
     // MARK: - MediaController
     func handle(command: MediaCommand) {
         switch command {
@@ -34,9 +36,11 @@ final class YandexMusicMediaController: MediaController {
         case .volumeDown:
             executeAppleScript(named: ScriptsName.volumeDown)
         case .volume(let value):
-            executeMethodsFromAppleScript(named: ScriptsName.volumeChange,
-                                          methodName: "setVolume",
-                                          withParameter: String(value))
+            volumeChangeThrottler.throttle {
+                self.executeMethodsFromAppleScript(named: ScriptsName.volumeChange,
+                                                   methodName: "setVolume",
+                                                   withParameter: String(value))
+            }
         }
     }
 
