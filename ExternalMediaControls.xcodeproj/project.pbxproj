@@ -10,6 +10,7 @@
 		461B3D2623C16CA500BEA0A2 /* yamusic_vol_change.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 461B3D2523C16CA500BEA0A2 /* yamusic_vol_change.scpt */; };
 		461B3D2923C172E300BEA0A2 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B3D2823C172E300BEA0A2 /* Throttler.swift */; };
 		461B3D2B23C177F800BEA0A2 /* yamusic_like_unlike.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 461B3D2A23C177F800BEA0A2 /* yamusic_like_unlike.scpt */; };
+		461B3D2D23C1F56200BEA0A2 /* AppleScriptRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B3D2C23C1F56200BEA0A2 /* AppleScriptRunner.swift */; };
 		466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */; };
 		466BC0CD23BFE07600C4C2AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CC23BFE07600C4C2AA /* Assets.xcassets */; };
 		466BC0D023BFE07600C4C2AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466BC0CE23BFE07600C4C2AA /* MainMenu.xib */; };
@@ -33,6 +34,7 @@
 		461B3D2523C16CA500BEA0A2 /* yamusic_vol_change.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_vol_change.scpt; sourceTree = "<group>"; };
 		461B3D2823C172E300BEA0A2 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		461B3D2A23C177F800BEA0A2 /* yamusic_like_unlike.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_like_unlike.scpt; sourceTree = "<group>"; };
+		461B3D2C23C1F56200BEA0A2 /* AppleScriptRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptRunner.swift; sourceTree = "<group>"; };
 		466BC0C723BFE07300C4C2AA /* ExternalMediaControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExternalMediaControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		466BC0CC23BFE07600C4C2AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				461B3D2823C172E300BEA0A2 /* Throttler.swift */,
+				461B3D2C23C1F56200BEA0A2 /* AppleScriptRunner.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4683F3FD23C0D53E00F93584 /* MediaController.swift in Sources */,
+				461B3D2D23C1F56200BEA0A2 /* AppleScriptRunner.swift in Sources */,
 				4683F40223C0D64000F93584 /* GlobalMediaController.swift in Sources */,
 				461B3D2923C172E300BEA0A2 /* Throttler.swift in Sources */,
 				46EE16A523C0F9BB007B1203 /* MediaCommandsObserver.swift in Sources */,

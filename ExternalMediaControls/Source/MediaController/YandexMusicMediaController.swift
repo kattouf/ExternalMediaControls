@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Carbon
 
 private struct ScriptsName {
     static let prev = "yamusic_prev"
@@ -27,66 +26,23 @@ final class YandexMusicMediaController: MediaController {
     func handle(command: MediaCommand) {
         switch command {
         case .prev:
-            executeAppleScript(named: ScriptsName.prev)
+            AppleScriptRunner.executeScript(named: ScriptsName.prev)
         case .play:
-            executeAppleScript(named: ScriptsName.play)
+            AppleScriptRunner.executeScript(named: ScriptsName.play)
         case .next:
-            executeAppleScript(named: ScriptsName.next)
+            AppleScriptRunner.executeScript(named: ScriptsName.next)
         case .volumeUp:
-            executeAppleScript(named: ScriptsName.volumeUp)
+            AppleScriptRunner.executeScript(named: ScriptsName.volumeUp)
         case .volumeDown:
-            executeAppleScript(named: ScriptsName.volumeDown)
+            AppleScriptRunner.executeScript(named: ScriptsName.volumeDown)
         case .like:
-            executeAppleScript(named: ScriptsName.like)
+            AppleScriptRunner.executeScript(named: ScriptsName.like)
         case .volume(let value):
             volumeChangeThrottler.throttle {
-                self.executeMethodsFromAppleScript(named: ScriptsName.volumeChange,
-                                                   methodName: "setVolume",
-                                                   withParameter: String(value))
+                AppleScriptRunner.executeMethodFromScript(named: ScriptsName.volumeChange,
+                                                          methodName: "setVolume",
+                                                          withParameters: [String(value)])
             }
         }
-    }
-
-    // MARK: - Private methods
-    private func executeAppleScript(named: String) {
-        guard let scriptURL = Bundle.main.url(forResource: named, withExtension: "scpt"),
-            let script = NSAppleScript(contentsOf: scriptURL, error: nil) else {
-                return
-        }
-
-        script.executeAndReturnError(nil)
-    }
-
-    func executeMethodsFromAppleScript(named: String,
-                                       methodName: String,
-                                       withParameter parameter: String) {
-        guard let scriptURL = Bundle.main.url(forResource: named, withExtension: "scpt"),
-            let script = NSAppleScript(contentsOf: scriptURL, error: nil) else {
-                return
-        }
-
-        let message = NSAppleEventDescriptor(string: parameter)
-
-        let parameters = NSAppleEventDescriptor(listDescriptor: ())
-        parameters.insert(message, at: 1)
-
-        var psn = ProcessSerialNumber(highLongOfPSN: UInt32(0), lowLongOfPSN: UInt32(kCurrentProcess))
-
-        let target = NSAppleEventDescriptor(descriptorType: typeProcessSerialNumber,
-                                            bytes: &psn,
-                                            length: MemoryLayout<ProcessSerialNumber>.size)
-
-        let handler = NSAppleEventDescriptor(string: methodName)
-
-        let event = NSAppleEventDescriptor.appleEvent(withEventClass: AEEventClass(kASAppleScriptSuite),
-                                                      eventID: AEEventID(kASSubroutineEvent),
-                                                      targetDescriptor: target,
-                                                      returnID: AEReturnID(kAutoGenerateReturnID),
-                                                      transactionID: AETransactionID(kAnyTransactionID))
-
-        event.setParam(handler, forKeyword: AEKeyword(keyASSubroutineName))
-        event.setParam(parameters, forKeyword: AEKeyword(keyDirectObject))
-
-        script.executeAppleEvent(event, error: nil)
     }
 }
