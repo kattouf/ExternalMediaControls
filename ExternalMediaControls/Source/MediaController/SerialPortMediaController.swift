@@ -1,5 +1,5 @@
 //
-//  SerialPortMediaCommandsObserver.swift
+//  SerialPortMediaController.swift
 //  ExternalMediaControls
 //
 //  Created by Vasiliy Yanguzin on 04.01.2020.
@@ -9,11 +9,11 @@
 import Foundation
 import ORSSerial
 
-final class SerialPortMediaCommandsObserver: NSObject, MediaCommandsObserver {
+final class SerialPortMediaController: NSObject, MediaController {
     // MARK: - Private properties
     private var port: ORSSerialPort?
 
-    // MARK: - MediaCommandsObserver
+    // MARK: - MediaController
     var didReceiveCommand: ((MediaCommand) -> Void)?
 
     func start() {
@@ -40,10 +40,16 @@ final class SerialPortMediaCommandsObserver: NSObject, MediaCommandsObserver {
         port = nil
     }
 
+    func showUIState(_ state: MediaUIState) {
+        switch state {
+        case .liked(let value):
+            showLikedState(value)
+        }
+    }
 }
 
 // MARK: - ORSSerialPortDelegate
-extension SerialPortMediaCommandsObserver: ORSSerialPortDelegate {
+extension SerialPortMediaController: ORSSerialPortDelegate {
 
     func serialPort(_ serialPort: ORSSerialPort,
                     didReceivePacket packetData: Data,
@@ -74,7 +80,8 @@ extension SerialPortMediaCommandsObserver: ORSSerialPortDelegate {
     }
 }
 
-private extension SerialPortMediaCommandsObserver {
+// MARK: - Private methods
+private extension SerialPortMediaController {
 
     func parseCommand(from receivedData: Data) -> MediaCommand? {
         guard let receivedString = String(data: receivedData, encoding: .utf8),
@@ -99,6 +106,12 @@ private extension SerialPortMediaCommandsObserver {
             return .volume(value: Float(code - 200) / Float(299 - 200))
         default:
             return nil
+        }
+    }
+
+    func showLikedState(_ value: Bool) {
+        if let data = "\(value ? 101 : 102)".data(using: .utf8) {
+            port?.send(data)
         }
     }
 }

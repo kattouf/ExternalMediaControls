@@ -20,12 +20,13 @@ final class AppleScriptRunner {
         script.executeAndReturnError(nil)
     }
 
+    @discardableResult
     static func executeMethodFromScript(named: String,
                                         methodName: String,
-                                        withParameters parameters: [String] = []) {
+                                        withParameters parameters: [String] = []) -> String? {
         guard let scriptURL = Bundle.main.url(forResource: named, withExtension: "scpt"),
             let script = NSAppleScript(contentsOf: scriptURL, error: nil) else {
-                return
+                return nil
         }
 
         let eventParameters = NSAppleEventDescriptor(listDescriptor: ())
@@ -50,7 +51,7 @@ final class AppleScriptRunner {
         event.setParam(handler, forKeyword: AEKeyword(keyASSubroutineName))
         event.setParam(eventParameters, forKeyword: AEKeyword(keyDirectObject))
 
-        script.executeAppleEvent(event, error: nil)
+        return script.executeAppleEvent(event, error: nil).stringValue
     }
 
 }
