@@ -93,6 +93,8 @@ private extension SerialPortMediaCommandsObserver {
             return .volumeDown
         case 105:
             return .volumeUp
+        case 106:
+            return .like
         case 200...299:
             return .volume(value: Float(code - 200) / Float(299 - 200))
         default:

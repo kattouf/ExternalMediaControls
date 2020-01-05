@@ -16,10 +16,11 @@ private struct ScriptsName {
     static let volumeUp = "yamusic_vol_up"
     static let volumeDown = "yamusic_vol_down"
     static let volumeChange = "yamusic_vol_change"
+    static let like = "yamusic_like_unlike"
 }
 
 final class YandexMusicMediaController: MediaController {
-
+    // MARK: - Private properties
     private let volumeChangeThrottler = Throttler(minimumDelay: 0.05)
 
     // MARK: - MediaController
@@ -35,6 +36,8 @@ final class YandexMusicMediaController: MediaController {
             executeAppleScript(named: ScriptsName.volumeUp)
         case .volumeDown:
             executeAppleScript(named: ScriptsName.volumeDown)
+        case .like:
+            executeAppleScript(named: ScriptsName.like)
         case .volume(let value):
             volumeChangeThrottler.throttle {
                 self.executeMethodsFromAppleScript(named: ScriptsName.volumeChange,
