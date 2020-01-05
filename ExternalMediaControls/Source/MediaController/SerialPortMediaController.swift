@@ -12,32 +12,22 @@ import ORSSerial
 final class SerialPortMediaController: NSObject, MediaController {
     // MARK: - Private properties
     private var port: ORSSerialPort?
+    private var availablePortsObervation: NSKeyValueObservation?
 
     // MARK: - MediaController
     var didReceiveCommand: ((MediaCommand) -> Void)?
 
     func start() {
-        guard let port = ORSSerialPortManager.shared().availablePorts.first(where: { $0.path == "/dev/cu.usbmodem144101" }) else {
-            print("cannot connect to port")
-            return
+        if !findAppropriatePortAndConnect() {
+            startObservingAvailablePorts()
         }
-
-        port.baudRate = 9600
-        port.delegate = self
-        port.open()
-
-        let packetRegex = try! NSRegularExpression(pattern: #"^\d{3}"#, options: [])
-        let packetDescriptor = ORSSerialPacketDescriptor(regularExpression: packetRegex,
-                                                         maximumPacketLength: 3,
-                                                         userInfo: nil)
-        port.startListeningForPackets(matching: packetDescriptor)
-
-        self.port = port
     }
 
     func stop() {
         port?.close()
         port = nil
+
+        stopObservingAvailablePorts()
     }
 
     func showUIState(_ state: MediaUIState) {
@@ -65,6 +55,8 @@ extension SerialPortMediaController: ORSSerialPortDelegate {
     func serialPortWasRemovedFromSystem(_ serialPort: ORSSerialPort) {
         port = nil
         print("Port was removed from system")
+
+        startObservingAvailablePorts()
     }
 
     func serialPortWasOpened(_ serialPort: ORSSerialPort) {
@@ -82,6 +74,42 @@ extension SerialPortMediaController: ORSSerialPortDelegate {
 
 // MARK: - Private methods
 private extension SerialPortMediaController {
+
+    func startObservingAvailablePorts() {
+        print("start waiting appropriate port")
+        availablePortsObervation = ORSSerialPortManager.shared().observe(\.availablePorts) { _, change in
+            if self.findAppropriatePortAndConnect() {
+                self.stopObservingAvailablePorts()
+            }
+        }
+    }
+
+    func stopObservingAvailablePorts() {
+        print("stop waiting appropriate port")
+        availablePortsObervation = nil
+    }
+
+    @discardableResult
+    func findAppropriatePortAndConnect() -> Bool {
+        guard let port = ORSSerialPortManager.shared().availablePorts.first(where: { $0.path == "/dev/cu.usbmodem144101" }) else {
+            print("cannot find appropriate port")
+            return false
+        }
+
+        port.baudRate = 9600
+        port.delegate = self
+        port.open()
+
+        let packetRegex = try! NSRegularExpression(pattern: #"^\d{3}"#, options: [])
+        let packetDescriptor = ORSSerialPacketDescriptor(regularExpression: packetRegex,
+                                                         maximumPacketLength: 3,
+                                                         userInfo: nil)
+        port.startListeningForPackets(matching: packetDescriptor)
+
+        self.port = port
+
+        return true
+    }
 
     func parseCommand(from receivedData: Data) -> MediaCommand? {
         guard let receivedString = String(data: receivedData, encoding: .utf8),
