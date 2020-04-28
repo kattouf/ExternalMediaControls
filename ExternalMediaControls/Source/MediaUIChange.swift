@@ -9,5 +9,6 @@
 import Foundation
 
 enum MediaUIChange {
-    case liked(Bool)
+    case like(Bool)
+    case trackInfo(title: String, author: String)
 }

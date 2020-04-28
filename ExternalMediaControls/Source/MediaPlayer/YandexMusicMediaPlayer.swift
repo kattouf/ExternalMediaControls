@@ -17,6 +17,7 @@ private struct ScriptsName {
     static let volumeChange = "yamusic_vol_change"
     static let like = "yamusic_like_unlike"
     static let likeStatus = "yamusic_like_status"
+    static let trackInfo = "yamusic_track_info"
 }
 
 final class YandexMusicMediaPlayer: MediaPlayer {
@@ -37,26 +38,32 @@ final class YandexMusicMediaPlayer: MediaPlayer {
 
     func handle(command: MediaCommand) {
         switch command {
-        case .prev:
-            AppleScriptRunner.executeScript(named: ScriptsName.prev)
-            updateLikeAfterChangeTrackScript()
-        case .play:
-            AppleScriptRunner.executeScript(named: ScriptsName.play)
-        case .next:
-            AppleScriptRunner.executeScript(named: ScriptsName.next)
-            updateLikeAfterChangeTrackScript()
-        case .volumeUp:
-            AppleScriptRunner.executeScript(named: ScriptsName.volumeUp)
-        case .volumeDown:
-            AppleScriptRunner.executeScript(named: ScriptsName.volumeDown)
-        case .like:
-            AppleScriptRunner.executeScript(named: ScriptsName.like)
-            updateLikeAfterChangeTrackScript()
-        case .volume(let value):
-            volumeChangeThrottler.throttle {
-                AppleScriptRunner.executeMethodFromScript(named: ScriptsName.volumeChange,
-                                                          methodName: "setVolume",
-                                                          withParameters: [String(value)])
+            case .prev:
+                AppleScriptRunner.executeScript(named: ScriptsName.prev)
+                updateUIWithDelay {
+                    self.updateTrackInfo()
+                    self.updateLikeStatus()
+                }
+            case .play:
+                AppleScriptRunner.executeScript(named: ScriptsName.play)
+            case .next:
+                AppleScriptRunner.executeScript(named: ScriptsName.next)
+                updateUIWithDelay {
+                    self.updateTrackInfo()
+                    self.updateLikeStatus()
+                }
+            case .volumeUp:
+                AppleScriptRunner.executeScript(named: ScriptsName.volumeUp)
+            case .volumeDown:
+                AppleScriptRunner.executeScript(named: ScriptsName.volumeDown)
+            case .like:
+                AppleScriptRunner.executeScript(named: ScriptsName.like)
+                updateUIWithDelay(updates: updateLikeStatus)
+            case .volume(let value):
+                volumeChangeThrottler.throttle {
+                    AppleScriptRunner.executeMethodFromScript(named: ScriptsName.volumeChange,
+                                                              methodName: "setVolume",
+                                                              withParameters: [String(value)])
             }
         }
     }
@@ -64,7 +71,8 @@ final class YandexMusicMediaPlayer: MediaPlayer {
     // MARK: - Private methods
     private func startStateUpdateTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
-            self?.updateLikeState()
+            self?.updateTrackInfo()
+            self?.updateLikeStatus()
         }
         timer?.fire()
     }
@@ -74,17 +82,32 @@ final class YandexMusicMediaPlayer: MediaPlayer {
         timer = nil
     }
 
-    private func updateLikeAfterChangeTrackScript() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.updateLikeState()
-        }
+    private func updateUIWithDelay(updates: @escaping () -> Void) {
+        // workaround: waits for change track
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: updates)
     }
 
-    private func updateLikeState() {
-        if let result = AppleScriptRunner.executeMethodFromScript(named: ScriptsName.likeStatus,
-                                                                  methodName: "getLiked"),
-            let isLiked = Bool(result) {
-            didUpdateUI?(.liked(isLiked))
+    private func updateLikeStatus() {
+        guard let result = AppleScriptRunner.executeMethodFromScript(named: ScriptsName.likeStatus,
+                                                                     methodName: "getLiked"),
+            let isLiked = Bool(result) else {
+                return
         }
+
+        didUpdateUI?(.like(isLiked))
+    }
+
+    private func updateTrackInfo() {
+        guard let result = AppleScriptRunner.executeMethodFromScript(named: ScriptsName.trackInfo,
+                                                                     methodName: "getTrackInfo") else {
+                return
+        }
+
+        let rows = result.split(separator: "\n")
+        guard rows.count == 2 else {
+            return
+        }
+
+        didUpdateUI?(.trackInfo(title: String(rows[0]), author: String(rows[1])))
     }
 }

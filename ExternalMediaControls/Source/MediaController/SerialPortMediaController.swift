@@ -32,8 +32,10 @@ final class SerialPortMediaController: NSObject, MediaController {
 
     func updateUI(_ change: MediaUIChange) {
         switch change {
-        case .liked(let value):
-            updateIsLiked(value)
+        case .like(let value):
+            updateLike(value)
+        case .trackInfo(let title, let author):
+            updateTrackInfo(title: title, author: author)
         }
     }
 }
@@ -138,8 +140,16 @@ private extension SerialPortMediaController {
         }
     }
 
-    func updateIsLiked(_ value: Bool) {
-        if let data = "\(value ? 101 : 102)".data(using: .utf8) {
+    func updateLike(_ value: Bool) {
+        if let data = "\(value ? 101 : 102)".data(using: .ascii) {
+            port?.send(data)
+        }
+    }
+
+    func updateTrackInfo(title: String, author: String) {
+        if let tagData = "103".data(using: .ascii),
+            let data = "\(title)\n\(author)".data(using: .utf8) {
+            port?.send(tagData)
             port?.send(data)
         }
     }
