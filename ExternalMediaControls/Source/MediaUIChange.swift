@@ -1,5 +1,5 @@
 //
-//  MediaUIState.swift
+//  MediaUIChange.swift
 //  ExternalMediaControls
 //
 //  Created by Vasiliy Yanguzin on 05.01.2020.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum MediaUIState {
+enum MediaUIChange {
     case liked(Bool)
 }
