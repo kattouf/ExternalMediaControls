@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MediaPlayer: class {
-    var didChangeUIState: ((MediaUIState) -> Void)? { get set }
+    var didUpdateUI: ((MediaUIChange) -> Void)? { get set }
 
     func handle(command: MediaCommand)
 }

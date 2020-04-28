@@ -25,9 +25,9 @@ final class YandexMusicMediaPlayer: MediaPlayer {
     private var timer: Timer?
 
     // MARK: - MediaController
-    var didChangeUIState: ((MediaUIState) -> Void)? {
+    var didUpdateUI: ((MediaUIChange) -> Void)? {
         didSet {
-            if didChangeUIState != nil {
+            if didUpdateUI != nil {
                 startStateUpdateTimer()
             } else {
                 stopStateUpdateTimer()
@@ -84,7 +84,7 @@ final class YandexMusicMediaPlayer: MediaPlayer {
         if let result = AppleScriptRunner.executeMethodFromScript(named: ScriptsName.likeStatus,
                                                                   methodName: "getLiked"),
             let isLiked = Bool(result) {
-            didChangeUIState?(.liked(isLiked))
+            didUpdateUI?(.liked(isLiked))
         }
     }
 }

@@ -30,10 +30,10 @@ final class SerialPortMediaController: NSObject, MediaController {
         stopObservingAvailablePorts()
     }
 
-    func showUIState(_ state: MediaUIState) {
-        switch state {
+    func updateUI(_ change: MediaUIChange) {
+        switch change {
         case .liked(let value):
-            showLikedState(value)
+            updateIsLiked(value)
         }
     }
 }
@@ -91,7 +91,8 @@ private extension SerialPortMediaController {
 
     @discardableResult
     func findAppropriatePortAndConnect() -> Bool {
-        guard let port = ORSSerialPortManager.shared().availablePorts.first(where: { $0.path == "/dev/cu.usbmodem144101" }) else {
+        // TODO: pick port via UI
+        guard let port = ORSSerialPortManager.shared().availablePorts.first(where: { $0.path.starts(with: "/dev/cu.usbmodem") }) else {
             print("cannot find appropriate port")
             return false
         }
@@ -137,7 +138,7 @@ private extension SerialPortMediaController {
         }
     }
 
-    func showLikedState(_ value: Bool) {
+    func updateIsLiked(_ value: Bool) {
         if let data = "\(value ? 101 : 102)".data(using: .utf8) {
             port?.send(data)
         }

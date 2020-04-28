@@ -15,8 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let mediaController: MediaController = SerialPortMediaController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        mediaPlayer.didChangeUIState = { [weak self] state in
-            self?.mediaController.showUIState(state)
+        mediaPlayer.didUpdateUI = { [weak self] change in
+            self?.mediaController.updateUI(change)
         }
 
         mediaController.didReceiveCommand = { [weak self] command in

@@ -14,5 +14,5 @@ protocol MediaController: class {
     func start()
     func stop()
 
-    func showUIState(_ state: MediaUIState)
+    func updateUI(_ change: MediaUIChange)
 }

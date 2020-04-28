@@ -11,7 +11,7 @@
 		461B3D2923C172E300BEA0A2 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B3D2823C172E300BEA0A2 /* Throttler.swift */; };
 		461B3D2B23C177F800BEA0A2 /* yamusic_like_unlike.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 461B3D2A23C177F800BEA0A2 /* yamusic_like_unlike.scpt */; };
 		461B3D2D23C1F56200BEA0A2 /* AppleScriptRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B3D2C23C1F56200BEA0A2 /* AppleScriptRunner.swift */; };
-		461B3D2F23C1F9EB00BEA0A2 /* MediaUIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B3D2E23C1F9EB00BEA0A2 /* MediaUIState.swift */; };
+		461B3D2F23C1F9EB00BEA0A2 /* MediaUIChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B3D2E23C1F9EB00BEA0A2 /* MediaUIChange.swift */; };
 		461B3D3223C2004B00BEA0A2 /* YandexMusicMediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B3D3123C2004B00BEA0A2 /* YandexMusicMediaPlayer.swift */; };
 		461B3D3423C203CB00BEA0A2 /* yamusic_like_status.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 461B3D3323C203CA00BEA0A2 /* yamusic_like_status.scpt */; };
 		466BC0CB23BFE07300C4C2AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466BC0CA23BFE07300C4C2AA /* AppDelegate.swift */; };
@@ -36,7 +36,7 @@
 		461B3D2823C172E300BEA0A2 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		461B3D2A23C177F800BEA0A2 /* yamusic_like_unlike.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_like_unlike.scpt; sourceTree = "<group>"; };
 		461B3D2C23C1F56200BEA0A2 /* AppleScriptRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptRunner.swift; sourceTree = "<group>"; };
-		461B3D2E23C1F9EB00BEA0A2 /* MediaUIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUIState.swift; sourceTree = "<group>"; };
+		461B3D2E23C1F9EB00BEA0A2 /* MediaUIChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUIChange.swift; sourceTree = "<group>"; };
 		461B3D3123C2004B00BEA0A2 /* YandexMusicMediaPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YandexMusicMediaPlayer.swift; sourceTree = "<group>"; };
 		461B3D3323C203CA00BEA0A2 /* yamusic_like_status.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yamusic_like_status.scpt; sourceTree = "<group>"; };
 		466BC0C723BFE07300C4C2AA /* ExternalMediaControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExternalMediaControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +164,7 @@
 				461B3D3023C1FA1500BEA0A2 /* App */,
 				461B3D2723C172D300BEA0A2 /* Utils */,
 				46EE16B023C14A59007B1203 /* MediaCommand.swift */,
-				461B3D2E23C1F9EB00BEA0A2 /* MediaUIState.swift */,
+				461B3D2E23C1F9EB00BEA0A2 /* MediaUIChange.swift */,
 				46EE16A323C0F9A6007B1203 /* MediaController */,
 				4683F3FE23C0D5F600F93584 /* MediaPlayer */,
 			);
@@ -265,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				461B3D2F23C1F9EB00BEA0A2 /* MediaUIState.swift in Sources */,
+				461B3D2F23C1F9EB00BEA0A2 /* MediaUIChange.swift in Sources */,
 				4683F3FD23C0D53E00F93584 /* MediaPlayer.swift in Sources */,
 				461B3D2D23C1F56200BEA0A2 /* AppleScriptRunner.swift in Sources */,
 				461B3D2923C172E300BEA0A2 /* Throttler.swift in Sources */,
