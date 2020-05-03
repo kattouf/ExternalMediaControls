@@ -141,16 +141,26 @@ private extension SerialPortMediaController {
     }
 
     func updateLike(_ value: Bool) {
-        if let data = "\(value ? 101 : 102)".data(using: .ascii) {
-            port?.send(data)
-        }
+        sendDataString("[101]{\(value ? 1 : 0)}")
     }
 
-    func updateTrackInfo(title: String, author: String) {
-        if let tagData = "103".data(using: .ascii),
-            let data = "\(title)\n\(author)".data(using: .utf8) {
-            port?.send(tagData)
-            port?.send(data)
+    func updateTrackInfo(title: String, author: String) { // todo: artist
+        let latinTitle = title
+            .applyingTransform(.toLatin, reverse: false)?
+            .applyingTransform(.stripDiacritics, reverse: false)
+            ?? title
+        let latinArtist = author
+            .applyingTransform(.toLatin, reverse: false)?
+            .applyingTransform(.stripDiacritics, reverse: false) ?? author
+        sendDataString("[102]{\(latinTitle)<~>\(latinArtist)}")
+    }
+
+    func sendDataString(_ dataString: String) {
+        guard
+            let data = dataString.data(using: .nonLossyASCII)
+        else {
+            return
         }
+        port?.send(data)
     }
 }
