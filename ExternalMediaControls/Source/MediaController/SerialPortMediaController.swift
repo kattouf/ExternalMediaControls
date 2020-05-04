@@ -32,10 +32,12 @@ final class SerialPortMediaController: NSObject, MediaController {
 
     func updateUI(_ change: MediaUIChange) {
         switch change {
-        case .like(let value):
-            updateLike(value)
-        case .trackInfo(let title, let author):
-            updateTrackInfo(title: title, author: author)
+            case .isPlaying(let value):
+                updateIsPlaying(value)
+            case .isLiked(let value):
+                updateIsLiked(value)
+            case .trackInfo(let title, let artist):
+                updateTrackInfo(title: title, artist: artist)
         }
     }
 }
@@ -74,7 +76,7 @@ extension SerialPortMediaController: ORSSerialPortDelegate {
     }
 }
 
-// MARK: - Private methods
+// MARK: - Ports managing
 private extension SerialPortMediaController {
 
     func startObservingAvailablePorts() {
@@ -113,6 +115,10 @@ private extension SerialPortMediaController {
 
         return true
     }
+}
+
+// MARK: - Handle input / output data
+private extension SerialPortMediaController {
 
     func parseCommand(from receivedData: Data) -> MediaCommand? {
         guard let receivedString = String(data: receivedData, encoding: .utf8),
@@ -121,45 +127,51 @@ private extension SerialPortMediaController {
         }
 
         switch code {
-        case 101:
-            return .prev
-        case 102:
-            return .play
-        case 103:
-            return .next
-        case 104:
-            return .volumeDown
-        case 105:
-            return .volumeUp
-        case 106:
-            return .like
-        case 200...299:
-            return .volume(value: Float(code - 200) / Float(299 - 200))
-        default:
-            return nil
+            case 101:
+                return .prev
+            case 102:
+                return .play
+            case 103:
+                return .next
+            case 104:
+                return .volumeDown
+            case 105:
+                return .volumeUp
+            case 106:
+                return .like
+            case 200...299:
+                return .volume(value: Float(code - 200) / Float(299 - 200))
+            default:
+                return nil
         }
     }
 
-    func updateLike(_ value: Bool) {
+    func updateIsPlaying(_ value: Bool) {
+        sendDataString("[103]{\(value ? 1 : 0)}")
+    }
+
+    func updateIsLiked(_ value: Bool) {
         sendDataString("[101]{\(value ? 1 : 0)}")
     }
 
-    func updateTrackInfo(title: String, author: String) { // todo: artist
-        let latinTitle = title
+    func updateTrackInfo(title: String, artist: String) {
+        let latinTitle = processTrackInfoString(title)
+        let latinArtist = processTrackInfoString(artist)
+        sendDataString("[102]{\(latinTitle)<~>\(latinArtist)}")
+    }
+
+    func processTrackInfoString(_ string: String) -> String {
+        string
             .applyingTransform(.toLatin, reverse: false)?
             .applyingTransform(.stripDiacritics, reverse: false)
-            ?? title
-        let latinArtist = author
-            .applyingTransform(.toLatin, reverse: false)?
-            .applyingTransform(.stripDiacritics, reverse: false) ?? author
-        sendDataString("[102]{\(latinTitle)<~>\(latinArtist)}")
+            ?? string
     }
 
     func sendDataString(_ dataString: String) {
         guard
             let data = dataString.data(using: .nonLossyASCII)
-        else {
-            return
+            else {
+                return
         }
         port?.send(data)
     }

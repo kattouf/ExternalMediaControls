@@ -16,6 +16,7 @@ private struct ScriptsName {
     static let volumeDown = "yamusic_vol_down"
     static let volumeChange = "yamusic_vol_change"
     static let like = "yamusic_like_unlike"
+    static let playStatus = "yamusic_play_status"
     static let likeStatus = "yamusic_like_status"
     static let trackInfo = "yamusic_track_info"
 }
@@ -46,6 +47,7 @@ final class YandexMusicMediaPlayer: MediaPlayer {
                 }
             case .play:
                 AppleScriptRunner.executeScript(named: ScriptsName.play)
+                updateUIWithDelay(updates: updatePlayStatus)
             case .next:
                 AppleScriptRunner.executeScript(named: ScriptsName.next)
                 updateUIWithDelay {
@@ -71,6 +73,7 @@ final class YandexMusicMediaPlayer: MediaPlayer {
     // MARK: - Private methods
     private func startStateUpdateTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            self?.updatePlayStatus()
             self?.updateTrackInfo()
             self?.updateLikeStatus()
         }
@@ -87,14 +90,24 @@ final class YandexMusicMediaPlayer: MediaPlayer {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: updates)
     }
 
-    private func updateLikeStatus() {
-        guard let result = AppleScriptRunner.executeMethodFromScript(named: ScriptsName.likeStatus,
-                                                                     methodName: "getLiked"),
-            let isLiked = Bool(result) else {
+    private func updatePlayStatus() {
+        guard let result = AppleScriptRunner.executeMethodFromScript(named: ScriptsName.playStatus,
+                                                                     methodName: "getPlayStatus"),
+            let value = Bool(result) else {
                 return
         }
 
-        didUpdateUI?(.like(isLiked))
+        didUpdateUI?(.isPlaying(value))
+    }
+
+    private func updateLikeStatus() {
+        guard let result = AppleScriptRunner.executeMethodFromScript(named: ScriptsName.likeStatus,
+                                                                     methodName: "getLiked"),
+            let value = Bool(result) else {
+                return
+        }
+
+        didUpdateUI?(.isLiked(value))
     }
 
     private func updateTrackInfo() {
@@ -108,6 +121,6 @@ final class YandexMusicMediaPlayer: MediaPlayer {
             return
         }
 
-        didUpdateUI?(.trackInfo(title: String(rows[0]), author: String(rows[1])))
+        didUpdateUI?(.trackInfo(title: String(rows[0]), artist: String(rows[1])))
     }
 }
